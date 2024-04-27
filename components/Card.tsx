@@ -1,3 +1,4 @@
+// components/Card.tsx
 import React from 'react';
 import { Card as CardType } from '../types';
 
@@ -6,11 +7,12 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ card }) => {
-  const cardColor = card.suit === '♦' || card.suit === '♥' ? 'text-red-500' : 'text-black';
-
+  const isRedCard = card.suit === '♥' || card.suit === '♦';
+  const cardClassName = `bg-white p-2 rounded mt-2 ${isRedCard ? 'text-red-500' : 'text-black'}`;
+  
   return (
-    <p className={`bg-white p-2 rounded mt-2 ${cardColor}`}>{card.rank}{card.suit}</p>
+    <p className={cardClassName}>{card.rank}{card.suit}</p>
   );
-};
+}
 
 export default Card;
