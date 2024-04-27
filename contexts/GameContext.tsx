@@ -1,3 +1,4 @@
+// contexts/GameContext.tsx
 import React, { createContext, useContext, useState } from 'react';
 import { createDeck, drawCards } from '../lib/utils/cardUtils';
 import { Card } from '../types';
