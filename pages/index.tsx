@@ -4,8 +4,22 @@ import { GameProvider, useGame } from '../contexts/GameContext';
 import Card from '../components/Card';
 
 const GameTable: React.FC = () => {
-  // useGame must be used within a child component of GameProvider
-  const { playerHand, flop, handleDrawHand, handleDrawFlop } = useGame();
+  const { playerHand, flop, turn, river, handleDrawHand, handleDrawFlop, handleDrawTurn, handleDrawRiver, handleResetGame } = useGame();
+
+  // Determine what the button should do and say based on the game state
+  const getActionButton = () => {
+    if (river.length > 0) {
+      return { label: 'Play New Hand', onClick: handleResetGame };
+    } else if (turn.length > 0) {
+      return { label: 'Draw River', onClick: handleDrawRiver };
+    } else if (flop.length > 0) {
+      return { label: 'Draw Turn', onClick: handleDrawTurn };
+    } else {
+      return { label: 'Draw Flop', onClick: handleDrawFlop };
+    }
+  };
+
+  const { label, onClick } = getActionButton();
 
   return (
     <>
@@ -19,8 +33,8 @@ const GameTable: React.FC = () => {
             ))}
           </div>
           <div className="p-4 border border-gray-300 rounded shadow">
-            <h2 className="font-semibold">Flop</h2>
-            {flop.map((card, index) => (
+            <h2 className="font-semibold">Community</h2>
+            {flop.concat(turn).concat(river).map((card, index) => (
               <Card key={index} card={card} />
             ))}
           </div>
@@ -29,8 +43,8 @@ const GameTable: React.FC = () => {
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={handleDrawHand}>
             Draw Hand
           </button>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4 disabled:opacity-50" onClick={handleDrawFlop} disabled={!playerHand.length}>
-            Draw Flop
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4" onClick={onClick}>
+            {label}
           </button>
         </div>
       </div>
