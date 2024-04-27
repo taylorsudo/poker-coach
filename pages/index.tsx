@@ -33,7 +33,7 @@ const GameTable: React.FC = () => {
             ))}
           </div>
           <div className="p-4 border border-gray-300 rounded shadow">
-            <h2 className="font-semibold">Community Cards</h2>
+            <h2 className="font-semibold">Community</h2>
             {flop.concat(turn).concat(river).map((card, index) => (
               <Card key={index} card={card} />
             ))}
