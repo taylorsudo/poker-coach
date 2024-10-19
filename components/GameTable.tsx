@@ -49,7 +49,7 @@ const GameTable: React.FC = () => {
     <div className="flex flex-col h-screen">
       <div className="flex-grow">
         <div className="relative bg-green-700 text-white p-10 rounded-3xl shadow-lg w-full max-w-6xl mx-auto my-10" style={{ height: '40vw', maxHeight: '500px' }}>
-          <h1 className="text-3xl font-bold mb-4 text-center">Texas Hold'em Table</h1>
+          <h1 className="text-3xl font-bold mb-4 text-center">Texas Hold&apos;em Table</h1>
           {/* Community cards positioned in the center */}
           <div className="absolute inset-0 flex justify-center items-center">
             {flop.concat(turn).concat(river).map((card, index) => (
