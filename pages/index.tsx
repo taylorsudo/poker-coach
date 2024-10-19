@@ -9,8 +9,8 @@ const HomePage: React.FC = () => {
     <GameProvider>
       <div className="flex justify-center items-center min-h-screen bg-green-900">
         <Head>
-          <title>Texas Hold'em Game</title>
-          <meta name="description" content="Interactive Texas Hold'em Game built with Next.js and Tailwind CSS" />
+          <title>Texas Hold&apos;em Game</title>
+          <meta name="description" content="Interactive Texas Hold&apos;em Game built with Next.js and Tailwind CSS" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <GameTable />
